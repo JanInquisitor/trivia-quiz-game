@@ -59,6 +59,10 @@ body {
           flex-direction: column;
 }
 
+.question-controls {
+  background-color: orange;
+}
+
 .footer {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -84,7 +88,6 @@ body {
 
 .question-box__header {
   font-size: 3.5rem;
-  background-color: orangered;
 }
 
 .question-box__text {
@@ -92,7 +95,6 @@ body {
   margin-left: 2rem;
   margin-right: 2rem;
   font-size: 2rem;
-  background-color: blueviolet;
 }
 
 .question-controls {
@@ -105,8 +107,7 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  justify-items: center;
 }
 
 .question-controls .answer {
@@ -120,10 +121,21 @@ body {
   display: inline-block;
   font-size: 16px;
   margin: 4px 2px;
+  max-width: 212px;
   cursor: pointer;
 }
 
 .hidden {
   display: none;
+}
+
+.correct-wrong {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.correct-wrong .right {
+  font-size: 2rem;
 }
 /*# sourceMappingURL=main.css.map */

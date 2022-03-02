@@ -33,35 +33,51 @@
         <div id="controls" class="question-controls">
           <!-- This shows the available answers -->
           <ul class="question-controls__answers-list">
-            <div class="answer">Answer 1</div>
-            <div class="answer">Answer 2</div>
-            <div class="answer">Answer 3</div>
-            <div class="answer">Answer 4</div>
+            <!-- <li class="answer">Answer 1</li>
+            <li class="answer">Answer 2</li>
+            <li class="answer">Answer 3</li>
+            <li class="answer">Answer 4</li> -->
           </ul>
         </div>
-        <!-- This renders if the correct answer was selected -->
-        <div class="right" hidden>CORRECT! 🎉</div>
-        <!-- This renders if a wrong answer was selected -->
-        <div class="wrong" hidden>WRONG! ❌</div>
+        <!-- This display the words 'correct' or 'wrong' depending on you answer -->
+        <div class="correct-wrong">
+          <!-- This renders if the correct answer was selected -->
+          <div id="right" class="right" hidden>CORRECT! 🎉</div>
+          <!-- This renders if a wrong answer was selected -->
+          <div id="right" class="wrong" hidden>WRONG! ❌</div>
+        </div>
       </section>
 
-      <!-- This section will be the intro of the  -->
+      <!-- This section will be the intro of the game -->
       <section class="intro-panel">
-        <div class="heading-main">
+        <div>
           <h1>Welcome to the super irrelevant trivia!</h1>
         </div>
-        <div class="intro-control-box">
-          <button class="intro-btn">Start!</button>
+        <div id="intro-control" class="intro-control-box">
+          <button class="start-btn">Start!</button>
         </div>
       </section>
 
-      <!-- This is the footer -->
-      <footer class="footer">
-        <!-- This is the main box inside the footer. So I can use flexbox. -->
-        <div class="footer-main-box">This is the footer</div>
-      </footer>
+      <!-- This the end game screen -->
+      <form action="" class="id" hidden>
+        <h2>End Screen</h2>
+        <div>
+          <label for="initials">Initials: </label>
+        </div>
+      </form>
     </main>
+    <!-- Timer box -->
+    <div class="timer-box">
+      <div class="timer-display">
+        <p>100</p>
+      </div>
+    </div>
 
+    <!-- This is the footer -->
+    <footer class="footer">
+      <!-- This is the main box inside the footer. So I can use flexbox. -->
+      <div class="footer-main-box">This is the footer</div>
+    </footer>
     <script src="./main.js"></script>
   </body>
 </html>

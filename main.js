@@ -1,10 +1,14 @@
 // Selecting elements
-var gamePanel = document.getElementById("game-panel");
-var questionBox = document.getElementById("question-box");
-var controls = document.getElementById("controls");
+var introPanelEl = document.querySelector(".intro-panel");
+var gamePanelEl = document.querySelector(".game-panel");
+var questionBoxEl = document.querySelector(".question-box");
+var questionHeadingEl = document.querySelector(".question-box__header");
+var questionTextEl = document.querySelector(".question-box__text");
+var questionControlsEl = document.querySelector("#controls");
+var startBtnEl = document.querySelector(".start-btn");
 
-// Elements specifics
-var questionHeading = questionBox.children[0];
+var cursor = 0;
+var score = 100;
 
 // Questions and Data
 var questionsDB = {
@@ -13,18 +17,23 @@ var questionsDB = {
     questionsArray: [
       {
         question: "How many planets are there in our solar system?",
-        answer: "8",
+        possible: ["Eight", "Nine", "Six", "Ten"],
         answerBtnPosition: 1,
         info: "Lorem Ipsum",
       },
       {
         question: "How many dog breeds are?",
-        answer: "who knows",
+        possible: ["Many", "A few", "None", "What is a dog?"],
         answerBtnPosition: 2,
       },
       {
         question: "Who invented italian food?",
-        answer: "Italians",
+        possible: [
+          "Japanese",
+          "It is a psyop",
+          "Who cares",
+          "What's an italian?",
+        ],
         answerBtnPosition: 3,
       },
     ],
@@ -34,55 +43,80 @@ var questionsDB = {
     questionsArray: [
       {
         question: "placeholder",
-        answer: "placeholder",
+        possible: [],
         answerBtnPosition: Math.floor(Math.random() * 4),
       },
     ],
   },
 };
 
-function rollQuestion() {
-  
+function renderQuestion() {
+  //Use the lodash library
+  // var btns = questionControlsEl.children[0].children;
 
   var dice = Math.floor(Math.random() * 3);
+  var questionObj = questionsDB["firstSet"].questionsArray[dice];
+  var correctAnswer;
+  var btn = document.createElement("li");
 
-  return questionsDB["firstSet"].questionsArray[dice].question;
+  questionHeadingEl.innerHTML = questionObj.question;
+
+  btn.classList.add("answer");
+  btn.textContent = " Answer"; // Randomize the questions possible answer into btn elements
+
+  console.log(questionObj);
+
+  for (let i = 0; i < questionObj.possible.length; i++) {
+    var item = questionObj.possible[i];
+    var answerBtn = document.createElement("li");
+    answerBtn.classList.add("answer");
+
+    answerBtn.textContent = i + 1 + ". " + item;
+
+    questionControlsEl.children[0].appendChild(answerBtn);
+  }
+  questionControlsEl.children[0].children[0].addEventListener("click", correct);
 }
 
-// Im thinking about making the 'createQuestion' function and 'renderQuestion' function the same.
-function createQuestion() {
-  // Rolls the question
-  var question = rollQuestion();
+function correct() {
+  var right = document.querySelector(".right");
+  right.removeAttribute("hidden");
+  console.log("Correct!!!");
 
-  //Select element
-  return (questionHeading.textContent = question);
+  gamePanelEl.classList.add("hidden");
+  gamePanelEl.classList.remove("hidden");
+
+  questionControlsEl.children[0].remove();
+  var newUl = document.createElement("ul");
+  newUl.classList.add("question-controls__answers-list");
+  questionControlsEl.append(newUl);
+  renderQuestion();
 }
 
-function renderQuestion() {}
+function showEndScreen() {
+  gamePanelEl.classList.add("hidden");
+  introPanelEl.classList.remove("hidden");
+}
 
-function controlsHandler() {}
+function startGame() {
+  // This hide the intro screen and renders the game screen
+  gamePanelEl.classList.remove("hidden");
+  introPanelEl.classList.add("hidden");
 
-function startGame() {}
+  //Run timer
+  var seconds = 75;
+  // document.getElementById("timerDisplay").innerHTML = seconds;
 
-// startGame();
+  var timer = setInterval(function () {
+    seconds--;
+    if (seconds < 0) {
+      clearInterval(timer);
+    }
+  }, 1000);
 
-rollQuestion();
+  renderQuestion();
+}
 
-// var questionsArray = [
-//   {
-//     question: "How many planets are there in our solar system?",
-//     answer: "8",
-//     answerBtnPosition: 1,
-//     info: "Lorem Ipsum",
-//   },
-//   {
-//     question: "How many dog breeds are?",
-//     answer: "who knows",
-//     answerBtnPosition: 2,
-//   },
-//   {
-//     question: "Who invented italian food?",
-//     answer: "Italians",
-//     answerBtnPosition: 3,
-//   },
-// ];
+// This event handles the start button and renders the panel.
+// I don't know where to place event handlers lmao.
+startBtnEl.addEventListener("click", startGame);

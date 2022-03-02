@@ -42,7 +42,10 @@ var questionsDB = {
 };
 
 function rollQuestion() {
+  
+
   var dice = Math.floor(Math.random() * 3);
+
   return questionsDB["firstSet"].questionsArray[dice].question;
 }
 

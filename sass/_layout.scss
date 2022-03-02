@@ -1,0 +1,34 @@
+.container {
+  max-width: 120rem;
+  margin: 8rem auto;
+  background-color: var(--color-grey-light-2);
+  box-shadow: var(--shadow-dark);
+
+  min-height: 50rem;
+}
+
+.intro-panel {
+  background-color: palegoldenrod;
+  display: flex;
+  flex-direction: column;
+}
+
+.game-panel {
+  background-color: palegoldenrod;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.question-controls {
+  // background-color: orange;
+}
+
+.footer {
+  display: flex;
+
+
+  &-main-box {
+    background-color: aqua;
+  }
+}

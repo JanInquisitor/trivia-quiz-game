@@ -1,0 +1,51 @@
+// This is the question box!
+.question-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__header {
+    font-size: 3.5rem;
+    background-color: orangered;
+
+  }
+
+  &__text {
+    margin-top: 1rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    font-size: 2rem;
+    background-color: blueviolet;
+  }
+}
+
+.question-controls {
+  margin-top: 1rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+
+  &__answers-list {
+    display: flex;
+    justify-content: space-around;
+  }
+
+
+  .answer {
+    background-color: #555555;
+    /* Green */
+    border-radius: 2.5rem;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+
+}
+
+.hidden {
+  display: none;
+}
